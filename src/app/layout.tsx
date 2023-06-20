@@ -1,11 +1,12 @@
 import "@/styles/globals.scss";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import styles from "./layout.module.scss";
+import { Header } from "./components/Header/Header";
+import { DESCRIPTION, TITLE } from "./layout.const";
+import { Footer } from "./components/Footer/Footer";
 
 export const metadata = {
-  title: "Билетопоиск",
-  description: 'Домашнее задание "Реакт для Яндекс ШРИ',
+  title: TITLE,
+  description: DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -15,7 +16,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Header />
+      <main className={styles.main}>{children}</main>
+      <Footer />
     </html>
   );
 }
