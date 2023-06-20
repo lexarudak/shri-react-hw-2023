@@ -1,32 +1,11 @@
 @mixin container {
-  width: calc(100% - $margin_l * 2);
+  width: calc(100% - $gap_l * 2);
   max-width: 1920px;
-  margin: $margin_m $margin_l;
+  margin: $gap_m $gap_l;
 }
 
-@mixin link_button($bottom) {
-  position: relative;
-
-  &::after {
-    content: '';
-    transition: .2s;
-    position: absolute;
-    bottom: $bottom;
-    right: -5px;
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    background-color: $White;
-    opacity: 0;
-  }
-  
-  &:hover {
-    &::after {
-      opacity: 1;
-      transform-origin: right bottom;
-      background-color: $Orange;
-      transform: rotate(90deg);
-    }
-  }
+@mixin label {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 32px;
 }
