@@ -1,5 +1,5 @@
 export const enum RouteList {
-  home = "/home",
+  home = "/",
   qa = "/qa",
   about = "/about",
 }
