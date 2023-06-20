@@ -7,8 +7,12 @@ export const Footer = (): JSX.Element => {
   return (
     <footer className={styles.footer}>
       <nav className={styles.nav}>
-        <Link href={RouteList.qa}>{QA}</Link>
-        <Link href={RouteList.about}>{ABOUT}</Link>
+        <Link className={styles.btn} href={RouteList.qa}>
+          {QA}
+        </Link>
+        <Link className={styles.btn} href={RouteList.about}>
+          {ABOUT}
+        </Link>
       </nav>
     </footer>
   );
