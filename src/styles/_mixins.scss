@@ -1,0 +1,5 @@
+@mixin container {
+  width: calc(100% - $margin_l * 2);
+  max-width: 1920px;
+  margin: $margin_m $margin_l;
+}
