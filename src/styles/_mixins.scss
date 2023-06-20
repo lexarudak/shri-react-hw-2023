@@ -4,3 +4,8 @@
   margin: $gap_m $gap_l;
 }
 
+@mixin label {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 32px;
+}
