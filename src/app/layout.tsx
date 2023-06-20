@@ -16,9 +16,11 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <Header />
-      <main className={styles.main}>{children}</main>
-      <Footer />
+      <body className={styles.body}>
+        <Header />
+        <main className={styles.main}>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
