@@ -1,0 +1,45 @@
+.header {
+  background-color: $Gray_1;
+  color: $White;
+}
+
+.nav {
+  @include container;
+  display: flex;
+  align-items: center;
+}
+
+.tickets {
+  margin-left: auto;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.cart {
+  width: 32px;
+  height: 32px;
+  background: url('/icons/basket.svg');
+}
+
+.tickets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  gap: 10px;
+
+  width: 28px;
+  height: 28px;
+
+  background: $Orange;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  margin-right: 8px;
+}
