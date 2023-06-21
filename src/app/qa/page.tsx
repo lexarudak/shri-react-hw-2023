@@ -6,7 +6,7 @@ import { QaHideBlock } from "./components/QaHideBlock/QaHideBlock";
 export default function QaPage(): JSX.Element {
   const fillQa = (qaList: [string, string][]): JSX.Element[] =>
     qaList.map(([q, a], ind) => (
-      <Card key={ind}>
+      <Card key={ind} className={styles.card}>
         <QaHideBlock q={q} a={a} />
       </Card>
     ));
