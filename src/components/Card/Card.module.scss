@@ -1,6 +1,5 @@
 .card {
-  background-color: $White;
-  padding: $gap_m;
+  @include card;
   display: flex;
   flex-direction: column;
   gap: $gap_s;

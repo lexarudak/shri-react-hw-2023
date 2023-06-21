@@ -1,0 +1,74 @@
+.filter {
+  @include card;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.form {
+  @include body_s;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.label {
+  margin: $gap_s 0 $gap_xxs;
+}
+
+.input {
+  padding: 10px 16px;
+  border-radius: $gap_xs;
+  border: 1px solid $Border_default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &::placeholder {
+    color: $Text_tertiary;
+  }
+
+  &:active,
+  &:focus {
+    border-color: $Orange;
+  }
+}
+
+.btn {
+  width: 20px;
+  height: 20px;
+  background: url(/icons/arrow_input.svg);
+
+  &.show {
+    transform: rotate(180deg);
+  }
+}
+
+.selectInput {
+  cursor: pointer;
+
+  .selectText {
+    color: $Text_tertiary;
+  }
+
+  .btn {
+    width: 20px;
+    height: 20px;
+    background: url(/icons/arrow_input.svg);
+  }
+
+  &.show {
+    border-color: $Orange;
+
+    .btn { 
+      transform: rotate(180deg);
+    }
+
+  }
+}
