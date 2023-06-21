@@ -1,0 +1,17 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: $gap_s;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.q {
+  @include label_small
+}
