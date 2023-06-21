@@ -9,3 +9,27 @@
   font-size: 32px;
   line-height: 32px;
 }
+
+@mixin label_small {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  background: url(/icons/arrow.svg);
+
+  &.show {
+    transform: rotate(180deg);
+  }
+}
+
+.a {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
