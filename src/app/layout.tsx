@@ -3,6 +3,8 @@ import styles from "./layout.module.scss";
 import { Header } from "./components/Header/Header";
 import { DESCRIPTION, TITLE } from "./layout.const";
 import { Footer } from "./components/Footer/Footer";
+import { Provider } from "react-redux";
+import { store } from "@/redux";
 
 export const metadata = {
   title: TITLE,
@@ -17,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={styles.body}>
-        <Header />
-        <main className={styles.main}>{children}</main>
-        <Footer />
+        <Provider store={store}>
+          <Header />
+          <main className={styles.main}>{children}</main>
+          <Footer />
+        </Provider>
       </body>
     </html>
   );
