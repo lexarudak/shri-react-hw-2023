@@ -4,6 +4,6 @@ const nextConfig = {
     additionalData: `@import "src/styles/index.scss";`,
   },
   experimental: { appDir: true },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
