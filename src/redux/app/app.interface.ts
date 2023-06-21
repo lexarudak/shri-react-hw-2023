@@ -1,3 +1,5 @@
+import { MovieShort } from "@/model/typesAndInterface";
+
 export interface AppState {
-  cart: string[];
+  cart: MovieShort[];
 }
