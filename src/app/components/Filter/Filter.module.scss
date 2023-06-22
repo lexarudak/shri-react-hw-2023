@@ -40,16 +40,6 @@
   }
 }
 
-.btn {
-  width: 20px;
-  height: 20px;
-  background: url(/icons/arrow_input.svg);
-
-  &.show {
-    transform: rotate(180deg);
-  }
-}
-
 .selectInput {
   cursor: pointer;
 
@@ -57,16 +47,18 @@
     color: $Text_tertiary;
   }
 
-  .btn {
+  .btnInput {
     width: 20px;
     height: 20px;
-    background: url(/icons/arrow_input.svg);
+    background: url(/icons/arrow_light.svg);
+    background-position: center;
+    background-size: contain;
   }
 
   &.show {
     border-color: $Orange;
 
-    .btn { 
+    .btnInput { 
       transform: rotate(180deg);
     }
 

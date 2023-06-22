@@ -11,7 +11,6 @@ import {
 } from "./Filter.const";
 import styles from "./Filter.module.scss";
 import { useState } from "react";
-import { type } from "os";
 
 export const Filter = (): JSX.Element => {
   const [isGenreShow, setIsGenreShow] = useState(false);
@@ -52,9 +51,7 @@ export const Filter = (): JSX.Element => {
           onClick={onClickGenre}
         >
           <p className={classNames(styles.selectText)}>{GENRE_PLACEHOLDER}</p>
-          <button
-            className={classNames(styles.btn, isGenreShow && styles.show)}
-          />
+          <div className={styles.btnInput} />
         </div>
         <p className={styles.label}>{CINEMA}</p>
         <div
@@ -66,7 +63,7 @@ export const Filter = (): JSX.Element => {
           onClick={onClickCinema}
         >
           <p className={classNames(styles.selectText)}>{CINEMA_PLACEHOLDER}</p>
-          <button className={styles.btn} />
+          <div className={styles.btnInput} />
         </div>
       </form>
     </aside>
