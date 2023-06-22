@@ -26,6 +26,11 @@
   &.open {
     border-color: $Orange;
 
+    .selectText {
+      color: $Text_primary;
+    }
+    
+
     .btnInput { 
       transform: rotate(180deg);
     }
@@ -42,6 +47,7 @@
   bottom: -$gap_xxs;
   transform: translateY(100%);
   background-color: $White;
+  box-shadow: $shadow_main;
 }
 
 .item {
