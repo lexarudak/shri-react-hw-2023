@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { Cinemas } from "@/model/typesAndInterface";
+import { Cinemas, Movies } from "@/model/typesAndInterface";
 import {
   buildCreateApi,
   coreModule,
@@ -24,7 +24,15 @@ export const appApi = createApi({
         url: Path.cinemas,
       }),
     }),
+    getMovies: query<Movies, string>({
+      query: (id: string) => ({
+        url: Path.movies,
+        params: {
+          cinemaId: id,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetCinemasQuery } = appApi;
+export const { useGetCinemasQuery, useGetMoviesQuery } = appApi;
