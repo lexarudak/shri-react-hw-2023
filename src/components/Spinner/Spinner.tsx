@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import styles from './Spinner.module.scss';
+import classNames from "classnames";
+import styles from "./Spinner.module.scss";
 
 export const Spinner = ({ isSmall = false }): JSX.Element => {
   return (
