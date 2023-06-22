@@ -1,42 +1,38 @@
 "use client";
+import {
+  filterCinemaSelector,
+  filterGenreSelector,
+  filterNameSelector,
+  setCinemaName,
+  setFilterGenre,
+  setFilterName,
+  useAppDispatch,
+  useAppSelector,
+} from "@/redux";
 import classNames from "classnames";
 import {
+  ALL_CINEMAS,
   CINEMA,
   CINEMA_PLACEHOLDER,
   GENRE,
+  GENRE_LIST,
   GENRE_PLACEHOLDER,
   NAME,
   NAME_PLACEHOLDER,
   TITLE,
 } from "./Filter.const";
 import styles from "./Filter.module.scss";
-import { useState } from "react";
-import {
-  filterNameSelector,
-  setFilterName,
-  useAppDispatch,
-  useAppSelector,
-} from "@/redux";
+import { Select } from "./Select/Select";
+import { ChangeEvent } from "react";
 
 export const Filter = (): JSX.Element => {
-  const [isGenreShow, setIsGenreShow] = useState(false);
-  const [isCinemaShow, setIsCinemaShow] = useState(false);
   const dispatch = useAppDispatch();
   const filterName = useAppSelector(filterNameSelector);
+  const filterGenre = useAppSelector(filterGenreSelector);
+  const filterCinema = useAppSelector(filterCinemaSelector);
 
-  const onClickGenre = (): void => {
-    if (!isGenreShow)
-      document.addEventListener("click", () => setIsGenreShow(false), {
-        once: true,
-      });
-    setIsGenreShow(!isGenreShow);
-  };
-  const onClickCinema = (): void => {
-    if (!isCinemaShow)
-      document.addEventListener("click", () => setIsCinemaShow(false), {
-        once: true,
-      });
-    setIsCinemaShow(!isCinemaShow);
+  const inputOnClick = (e: ChangeEvent<HTMLInputElement>): void => {
+    dispatch(setFilterName(e.target.value));
   };
 
   return (
@@ -49,32 +45,22 @@ export const Filter = (): JSX.Element => {
           type="text"
           placeholder={NAME_PLACEHOLDER}
           value={filterName}
-          onChange={(e) => dispatch(setFilterName(e.target.value))}
+          onChange={(e) => inputOnClick(e)}
         />
-        <p className={styles.label}>{GENRE}</p>
-        <div
-          className={classNames(
-            styles.input,
-            styles.selectInput,
-            isGenreShow && styles.show
-          )}
-          onClick={onClickGenre}
-        >
-          <p className={classNames(styles.selectText)}>{GENRE_PLACEHOLDER}</p>
-          <div className={styles.btnInput} />
-        </div>
-        <p className={styles.label}>{CINEMA}</p>
-        <div
-          className={classNames(
-            styles.input,
-            styles.selectInput,
-            isCinemaShow && styles.show
-          )}
-          onClick={onClickCinema}
-        >
-          <p className={classNames(styles.selectText)}>{CINEMA_PLACEHOLDER}</p>
-          <div className={styles.btnInput} />
-        </div>
+        <Select
+          label={GENRE}
+          placeholder={GENRE_PLACEHOLDER}
+          value={filterGenre}
+          setter={setFilterGenre}
+          list={GENRE_LIST as string[]}
+        />
+        <Select
+          label={CINEMA}
+          placeholder={CINEMA_PLACEHOLDER}
+          value={filterCinema}
+          setter={setCinemaName}
+          list={[ALL_CINEMAS]}
+        />
       </form>
     </aside>
   );

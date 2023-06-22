@@ -23,12 +23,7 @@
 }
 
 .input {
-  padding: 10px 16px;
-  border-radius: $gap_xs;
-  border: 1px solid $Border_default;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include input;
 
   &::placeholder {
     color: $Text_tertiary;
@@ -37,30 +32,5 @@
   &:active,
   &:focus {
     border-color: $Orange;
-  }
-}
-
-.selectInput {
-  cursor: pointer;
-
-  .selectText {
-    color: $Text_tertiary;
-  }
-
-  .btnInput {
-    width: 20px;
-    height: 20px;
-    background: url(/icons/arrow_light.svg);
-    background-position: center;
-    background-size: contain;
-  }
-
-  &.show {
-    border-color: $Orange;
-
-    .btnInput { 
-      transform: rotate(180deg);
-    }
-
   }
 }

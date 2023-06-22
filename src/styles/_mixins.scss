@@ -22,6 +22,15 @@
   line-height: 32px;
 }
 
+@mixin input {
+  padding: 10px 16px;
+  border-radius: $gap_xs;
+  border: 1px solid $Border_default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 
 // fonts

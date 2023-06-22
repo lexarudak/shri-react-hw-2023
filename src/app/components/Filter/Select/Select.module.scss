@@ -1,0 +1,50 @@
+.select {
+  @include body_s;
+  display: flex;
+  flex-direction: column;
+  gap: $gap_xxs;
+  margin-top: $gap_s;
+  position: relative
+}
+
+.input {
+  @include input;
+  cursor: pointer;
+
+  .selectText.empty {
+    color: $Text_tertiary;
+  }
+
+  .btnInput {
+    width: 20px;
+    height: 20px;
+    background: url(/icons/arrow_light.svg);
+    background-position: center;
+    background-size: contain;
+  }
+  
+  &.open {
+    border-color: $Orange;
+
+    .btnInput { 
+      transform: rotate(180deg);
+    }
+
+  }
+}
+
+.list {
+  z-index: 2;
+  width: 360px;
+  padding: $gap_xs;
+  border-radius: $gap_xs;
+  position: absolute;
+  bottom: -$gap_xxs;
+  transform: translateY(100%);
+  background-color: $White;
+}
+
+.item {
+  padding: 12px;
+  cursor: pointer;
+}

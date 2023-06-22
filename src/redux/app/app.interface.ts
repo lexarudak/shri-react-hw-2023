@@ -1,3 +1,4 @@
+import { GenreList } from "@/app/components/Filter/Filter.const";
 import { MovieShort } from "@/model/typesAndInterface";
 
 export interface AppState {
@@ -7,6 +8,6 @@ export interface AppState {
 
 export interface Filter {
   name: string;
-  genre: string;
+  genre: GenreList;
   cinema: string;
 }
