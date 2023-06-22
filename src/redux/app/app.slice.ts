@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "./app.const";
 import { MovieShort } from "@/model/typesAndInterface";
-import { GenreList } from "@/app/components/Filter/Filter.const";
+import { FilterValue } from "./app.interface";
 
 export const appSlice = createSlice({
   name: "appSlice",
@@ -13,10 +13,10 @@ export const appSlice = createSlice({
     setFilterName(state, action: PayloadAction<string>): void {
       state.filter.name = action.payload;
     },
-    setFilterGenre(state, action: PayloadAction<GenreList>): void {
+    setFilterGenre(state, action: PayloadAction<FilterValue>): void {
       state.filter.genre = action.payload;
     },
-    setCinemaName(state, action: PayloadAction<string>): void {
+    setCinemaName(state, action: PayloadAction<FilterValue>): void {
       state.filter.cinema = action.payload;
     },
   },

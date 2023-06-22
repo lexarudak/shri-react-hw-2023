@@ -1,5 +1,6 @@
 "use client";
 import {
+  FilterValue,
   filterCinemaSelector,
   filterGenreSelector,
   filterNameSelector,
@@ -24,12 +25,18 @@ import {
 import styles from "./Filter.module.scss";
 import { Select } from "./Select/Select";
 import { ChangeEvent } from "react";
+import { useGetCinemasQuery } from "@/redux/app/app.api";
+import { Cinemas } from "@/model/typesAndInterface";
 
 export const Filter = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const filterName = useAppSelector(filterNameSelector);
   const filterGenre = useAppSelector(filterGenreSelector);
   const filterCinema = useAppSelector(filterCinemaSelector);
+  const { data } = useGetCinemasQuery("");
+
+  const getCinemaNames = (cinemas: Cinemas): FilterValue[] =>
+    cinemas.map(({ name, id }) => ({ name, value: id }));
 
   const inputOnClick = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch(setFilterName(e.target.value));
@@ -50,16 +57,16 @@ export const Filter = (): JSX.Element => {
         <Select
           label={GENRE}
           placeholder={GENRE_PLACEHOLDER}
-          value={filterGenre}
+          filterValue={filterGenre}
           setter={setFilterGenre}
-          list={GENRE_LIST as string[]}
+          list={GENRE_LIST}
         />
         <Select
           label={CINEMA}
           placeholder={CINEMA_PLACEHOLDER}
-          value={filterCinema}
+          filterValue={filterCinema}
           setter={setCinemaName}
-          list={[ALL_CINEMAS]}
+          list={data ? [ALL_CINEMAS, ...getCinemaNames(data)] : [ALL_CINEMAS]}
         />
       </form>
     </aside>

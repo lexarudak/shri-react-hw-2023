@@ -1,36 +1,36 @@
 "use client";
 import classNames from "classnames";
 import styles from "./Select.module.scss";
-import { useAppDispatch } from "@/redux";
+import { FilterValue, useAppDispatch } from "@/redux";
 import { useState } from "react";
 import { nextClickClose } from "@/model/helper";
 import { SelectProps } from "./Select.interface";
 
-export function Select<P, T extends string>({
+export function Select<T extends string>({
   label,
   placeholder,
-  value,
+  filterValue: { name },
   setter,
   list,
-}: SelectProps<P, T>): JSX.Element {
+}: SelectProps<FilterValue, T>): JSX.Element {
   const dispatch = useAppDispatch();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [allSelect] = list;
+  const [{ name: initName }] = list;
 
   const onClickSelect = (): void => {
     if (!isSelectOpen) nextClickClose(setIsSelectOpen);
     setIsSelectOpen(!isSelectOpen);
   };
 
-  const fillList = (list: string[]): JSX.Element => (
+  const fillList = (list: FilterValue[]): JSX.Element => (
     <ul className={styles.list}>
       {list.map((item, ind) => (
         <li
           className={styles.item}
           key={ind}
-          onClick={() => dispatch(setter(item as P))}
+          onClick={() => dispatch(setter(item))}
         >
-          {item}
+          {item.name}
         </li>
       ))}
     </ul>
@@ -46,10 +46,10 @@ export function Select<P, T extends string>({
         <p
           className={classNames(
             styles.selectText,
-            value === allSelect && styles.empty
+            name === initName && styles.empty
           )}
         >
-          {value === allSelect ? placeholder : value}
+          {name === initName ? placeholder : name}
         </p>
         <div className={styles.btnInput} />
       </div>

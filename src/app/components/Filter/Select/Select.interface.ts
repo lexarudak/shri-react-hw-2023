@@ -1,9 +1,9 @@
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
-export interface SelectProps<P, T extends string> {
+export interface SelectProps<FilterValue, T extends string> {
   label: string;
-  value: string;
-  setter: ActionCreatorWithPayload<P, T>;
+  filterValue: FilterValue;
+  setter: ActionCreatorWithPayload<FilterValue, T>;
   placeholder: string;
-  list: string[];
+  list: FilterValue[];
 }
