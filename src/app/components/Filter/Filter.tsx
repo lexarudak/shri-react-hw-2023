@@ -11,10 +11,18 @@ import {
 } from "./Filter.const";
 import styles from "./Filter.module.scss";
 import { useState } from "react";
+import {
+  filterNameSelector,
+  setFilterName,
+  useAppDispatch,
+  useAppSelector,
+} from "@/redux";
 
 export const Filter = (): JSX.Element => {
   const [isGenreShow, setIsGenreShow] = useState(false);
   const [isCinemaShow, setIsCinemaShow] = useState(false);
+  const dispatch = useAppDispatch();
+  const filterName = useAppSelector(filterNameSelector);
 
   const onClickGenre = (): void => {
     if (!isGenreShow)
@@ -40,6 +48,8 @@ export const Filter = (): JSX.Element => {
           className={classNames(styles.input)}
           type="text"
           placeholder={NAME_PLACEHOLDER}
+          value={filterName}
+          onChange={(e) => dispatch(setFilterName(e.target.value))}
         />
         <p className={styles.label}>{GENRE}</p>
         <div
