@@ -1,19 +1,32 @@
 "use client";
 import { useGetMoviesQuery } from "@/redux/app/app.api";
 import styles from "./MovieContainer.module.scss";
-import { filterCinemaSelector, useAppSelector } from "@/redux";
+import {
+  filterCinemaSelector,
+  filterGenreSelector,
+  filterNameSelector,
+  useAppSelector,
+} from "@/redux";
 import { Movies } from "@/model/typesAndInterface";
 import { Spinner } from "@/components/Spinner/Spinner";
-// import { useEffect, useState } from "react";
 
 export const MovieContainer = (): JSX.Element => {
-  // const [isComponentLoad, setIsComponentLoad] = useState(false);
-  // useEffect(() => setIsComponentLoad(true), []);
+  const { value: filterCinema } = useAppSelector(filterCinemaSelector);
+  const { value: filterGenre } = useAppSelector(filterGenreSelector);
+  const name = useAppSelector(filterNameSelector);
+  const { isFetching, currentData } = useGetMoviesQuery(filterCinema);
+  const fillContainer = (data: Movies): JSX.Element[] => {
+    const filteredByGenre = filterGenre
+      ? data.filter(({ genre }) => genre === filterGenre)
+      : data;
+    const filteredByName = name
+      ? filteredByGenre.filter(({ title }) =>
+          title.toLowerCase().includes(name.toLowerCase().trim())
+        )
+      : filteredByGenre;
+    return filteredByName.map(({ title }, ind) => <div key={ind}>{title}</div>);
+  };
 
-  const { value } = useAppSelector(filterCinemaSelector);
-  const { isFetching, currentData } = useGetMoviesQuery(value);
-  const fillContainer = (data: Movies): JSX.Element[] =>
-    data.map(({ title }, ind) => <div key={ind}>{title}</div>);
   return (
     <div className={styles.movieContainer}>
       {currentData && fillContainer(currentData)}
