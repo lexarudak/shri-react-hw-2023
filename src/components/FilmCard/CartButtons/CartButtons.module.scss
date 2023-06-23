@@ -5,6 +5,10 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
+
+  &.large {
+    width: 79px;
+  }
 }
 
 .btn {

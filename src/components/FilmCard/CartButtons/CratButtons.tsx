@@ -24,7 +24,7 @@ export const CartButtons = ({ movie }: { movie: MovieShort }): JSX.Element => {
   };
 
   return (
-    <div className={styles.buttons}>
+    <div className={classnames(styles.buttons, amount > 9 && styles.large)}>
       <button
         className={classnames(styles.btn, styles.btnMinus)}
         onClick={reduceItemAmount}

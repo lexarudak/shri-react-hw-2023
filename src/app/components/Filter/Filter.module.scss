@@ -2,6 +2,9 @@
   @include card;
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 30px;
+  max-height: 862px;
 }
 
 .title {
