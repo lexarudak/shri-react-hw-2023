@@ -22,14 +22,14 @@ export function Select<T extends string>({
     setIsSelectOpen(!isSelectOpen);
   };
 
+  const onClickItem = (item: FilterValue): void => {
+    dispatch(setter(item));
+  };
+
   const fillList = (list: FilterValue[]): JSX.Element => (
     <ul className={styles.list}>
       {list.map((item, ind) => (
-        <li
-          className={styles.item}
-          key={ind}
-          onClick={() => dispatch(setter(item))}
-        >
+        <li className={styles.item} key={ind} onClick={() => onClickItem(item)}>
           {item.name}
         </li>
       ))}

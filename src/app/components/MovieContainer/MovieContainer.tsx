@@ -19,16 +19,18 @@ export const MovieContainer = (): JSX.Element => {
   const { isFetching, currentData } = useGetMoviesQuery(filterCinema);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   useEffect(() => setIsPageLoaded(true), []);
+  const data = currentData && fillContainer(currentData, filterGenre, name);
 
   return (
     <div className={styles.movieContainer}>
-      {isPageLoaded &&
-        currentData &&
-        fillContainer(currentData, filterGenre, name)}
+      {isPageLoaded && !isFetching && data}
       {isPageLoaded && isFetching && (
         <div className={styles.spinnerContainer}>
           <Spinner isSmall />
         </div>
+      )}
+      {!data?.length && !isFetching && (
+        <p className={styles.noMovies}>Фильмы не найдены</p>
       )}
     </div>
   );

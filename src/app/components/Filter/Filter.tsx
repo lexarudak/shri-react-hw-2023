@@ -45,7 +45,7 @@ export const Filter = (): JSX.Element => {
   return (
     <aside className={styles.filter}>
       <h2 className={styles.title}>{TITLE}</h2>
-      <form className={styles.form}>
+      <div className={styles.form}>
         <label className={styles.label}>{NAME}</label>
         <input
           className={classNames(styles.input)}
@@ -68,7 +68,7 @@ export const Filter = (): JSX.Element => {
           setter={setCinemaName}
           list={data ? [ALL_CINEMAS, ...getCinemaNames(data)] : [ALL_CINEMAS]}
         />
-      </form>
+      </div>
     </aside>
   );
 };
