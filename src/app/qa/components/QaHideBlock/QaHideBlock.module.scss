@@ -1,4 +1,5 @@
-.block {
+.card {
+  @include card;
   display: flex;
   flex-direction: column;
   gap: $gap_s;

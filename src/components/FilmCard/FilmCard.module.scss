@@ -1,0 +1,31 @@
+.card {
+  @include card;
+  display: flex;
+  gap: $gap_m;
+  align-items: flex-start;
+}
+
+.img {
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: $gap_xs;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: $gap_xs;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.genre {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 20px;
+}

@@ -7,10 +7,12 @@ import { cartSelector, useAppSelector } from "@/redux";
 
 export const Header = (): JSX.Element => {
   const getCartItems = useAppSelector(cartSelector);
-  const getTicketsAmount = (): number =>
-    getCartItems.reduce((acc, { amount }) => {
+  const getTicketsAmount = (): number => {
+    const items = Object.values(getCartItems);
+    return items.reduce((acc, { amount }) => {
       return acc + amount;
     }, 0);
+  };
 
   return (
     <header className={styles.header}>

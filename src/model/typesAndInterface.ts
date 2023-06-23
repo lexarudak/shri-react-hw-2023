@@ -25,7 +25,6 @@ export type Movies = Movie[];
 
 export interface MovieShort {
   id: string;
-  amount: number;
   title: string;
   posterUrl: string;
   genre: string;

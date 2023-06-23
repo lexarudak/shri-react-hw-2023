@@ -1,8 +1,6 @@
-import { MovieShort } from "@/model/typesAndInterface";
-import { FilterValue, RootState } from "@/redux";
+import { Cart, FilterValue, RootState } from "@/redux";
 
-export const cartSelector = (state: RootState): MovieShort[] =>
-  state.appSlice.cart;
+export const cartSelector = (state: RootState): Cart => state.appSlice.cart;
 
 export const filterNameSelector = (state: RootState): string =>
   state.appSlice.filter.name;

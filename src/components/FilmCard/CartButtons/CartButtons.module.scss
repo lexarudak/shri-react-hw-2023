@@ -1,0 +1,44 @@
+
+.buttons {
+  display: flex;
+  width: 68px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: $gap_xxs;
+  width: 20px;
+  height: 20px;
+  background-color: $Orange;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:disabled {
+    background-color: $Orange_disabled;
+  }
+}
+
+.amount {
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  font-family: Roboto, sans-serif;
+  color: #1B1F23;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.btnMinus {
+  background-image: url('/icons/plus-1.svg');
+}
+
+.btnPlus {
+  background-image: url('/icons/plus.svg');
+}

@@ -1,5 +1,6 @@
 @mixin link_button($bottom) {
   position: relative;
+  cursor: pointer;
 
   &::after {
     content: '';

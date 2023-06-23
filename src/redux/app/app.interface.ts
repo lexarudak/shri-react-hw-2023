@@ -1,7 +1,14 @@
 import { MovieShort } from "@/model/typesAndInterface";
 
+export type Cart = {
+  [id: string]: {
+    movie: MovieShort;
+    amount: number;
+  };
+};
+
 export interface AppState {
-  cart: MovieShort[];
+  cart: Cart;
   filter: Filter;
 }
 
