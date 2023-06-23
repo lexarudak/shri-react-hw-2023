@@ -11,6 +11,8 @@ import {
 import { Spinner } from "@/components/Spinner/Spinner";
 import { fillContainer } from "./MovieContainer.helper";
 import { useEffect, useState } from "react";
+import { LightBanner } from "@/components/LightBanner/LightBanner";
+import { EMPTY_PAGE_TEXT } from "./MovieContainer.const";
 
 export const MovieContainer = (): JSX.Element => {
   const { value: filterCinema } = useAppSelector(filterCinemaSelector);
@@ -29,9 +31,7 @@ export const MovieContainer = (): JSX.Element => {
           <Spinner isSmall />
         </div>
       )}
-      {!data?.length && !isFetching && (
-        <p className={styles.noMovies}>Фильмы не найдены</p>
-      )}
+      {!data?.length && !isFetching && <LightBanner text={EMPTY_PAGE_TEXT} />}
     </div>
   );
 };

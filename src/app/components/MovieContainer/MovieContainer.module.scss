@@ -6,16 +6,9 @@
   gap: $gap_s;
 }
 
-.spinnerContainer,
-.noMovies {
+.spinnerContainer {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.noMovies {
-  color: $Text_tertiary;
-  font-weight: 600;
-  font-size: 20px;
 }

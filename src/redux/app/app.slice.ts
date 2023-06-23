@@ -1,12 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState, MAX_TICKETS_IN_CART } from "./app.const";
 import { MovieShort } from "@/model/typesAndInterface";
-import { FilterValue } from "./app.interface";
+import { Cart, Filter, FilterValue } from "./app.interface";
 
 export const appSlice = createSlice({
   name: "appSlice",
   initialState,
   reducers: {
+    setInit(state): void {
+      state.init = false;
+    },
+    setCart(state, action: PayloadAction<Cart>) {
+      state.cart = action.payload;
+    },
     addToCart(state, action: PayloadAction<MovieShort>): void {
       const { id } = action.payload;
       if (id in state.cart) {
@@ -23,13 +29,21 @@ export const appSlice = createSlice({
       const { id } = action.payload;
       if (id in state.cart) {
         const value = state.cart[id];
-        if (value.amount > 0) value.amount--;
-      } else {
-        delete state.cart[id];
+        if (value.amount > 1) {
+          value.amount--;
+        } else {
+          delete state.cart[id];
+        }
       }
     },
     removeItem(state, action: PayloadAction<string>): void {
       delete state.cart[action.payload];
+    },
+    setFilter(state, action: PayloadAction<Filter>): void {
+      const { name, genre, cinema } = action.payload;
+      state.filter.name = name;
+      state.filter.genre = genre;
+      state.filter.cinema = cinema;
     },
     setFilterName(state, action: PayloadAction<string>): void {
       state.filter.name = action.payload;
@@ -50,6 +64,9 @@ export const {
   setFilterName,
   setFilterGenre,
   setCinemaName,
+  setInit,
+  setFilter,
+  setCart,
 } = appSlice.actions;
 
 export default appSlice.reducer;

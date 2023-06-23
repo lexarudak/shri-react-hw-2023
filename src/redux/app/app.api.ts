@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Cinemas, Movies } from "@/model/typesAndInterface";
 import {
   buildCreateApi,
