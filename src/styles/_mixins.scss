@@ -4,6 +4,12 @@
   margin: $gap_m $gap_l;
 }
 
+@mixin card {
+  padding: $gap_m;
+  background-color: $White;
+  border-radius: $gap_xs;
+}
+
 @mixin label {
   font-weight: 600;
   font-size: 32px;
@@ -16,20 +22,22 @@
   line-height: 32px;
 }
 
-.btn {
-  width: 32px;
-  height: 32px;
-  background: url(/icons/arrow.svg);
-
-  &.show {
-    transform: rotate(180deg);
-  }
+@mixin input {
+  padding: 10px 16px;
+  border-radius: $gap_xs;
+  border: 1px solid $Border_default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.a {
-  display: none;
 
-  &.show {
-    display: block;
-  }
-}
+
+// fonts
+ @mixin body_s {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+ }

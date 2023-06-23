@@ -2,9 +2,12 @@
 $White: #FFFFFF;
 $Gray_1: #1E1E1E;
 $Orange: #FF5500;
+$Orange_disabled: #FFA375;
 $Background: #F5F5F5;
+$Border_default: #E1E3E6;
 
 $Text_primary: #1B1F23;
+$Text_tertiary: #999FA6;
 
 // text
 
@@ -13,4 +16,9 @@ $Text_primary: #1B1F23;
 $gap_l: 32px;
 $gap_m: 24px;
 $gap_s: 16px;
+$gap_xs: 8px;
+$gap_xxs: 4px;
+
+//shadow 
+$shadow_main: 0px 10px 22px -4px rgba(27, 31, 35, 0.12);
 

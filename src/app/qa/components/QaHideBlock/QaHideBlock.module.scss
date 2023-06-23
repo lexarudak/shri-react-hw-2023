@@ -1,4 +1,5 @@
-.block {
+.card {
+  @include card;
   display: flex;
   flex-direction: column;
   gap: $gap_s;
@@ -14,4 +15,22 @@
 
 .q {
   @include label_small
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+  background: url(/icons/arrow.svg);
+
+  &.show {
+    transform: rotate(180deg);
+  }
+}
+
+.a {
+  display: none;
+
+  &.show {
+    display: block;
+  }
 }
