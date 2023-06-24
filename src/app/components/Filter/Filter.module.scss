@@ -8,9 +8,7 @@
 }
 
 .title {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
+  @include text_s;
   margin-bottom: 20px;
 }
 

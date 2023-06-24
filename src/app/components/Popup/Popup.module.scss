@@ -26,10 +26,7 @@
 }
 
 .title {
-  font-size: 20px;
-  font-family: Roboto;
-  font-weight: 600;
-  line-height: 20px;
+  @include text_m;
 }
 
 .closeBtn {
@@ -44,7 +41,6 @@
 .text {
   margin-bottom: $gap_m;
   font-size: 16px;
-  font-family: Roboto;
   line-height: 20px;
 }
 
@@ -56,10 +52,6 @@
 .btnYes,
 .btnNo {
   text-align: center;
-  font-size: 14px;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 20px;
   height: 40px;
   padding: 0 $gap_s;
   border-radius: $gap_xs;

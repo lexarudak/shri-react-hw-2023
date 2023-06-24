@@ -4,6 +4,6 @@
   gap: $gap_s;
 }
 .title {
-  @include label;
+  @include title;
   @include card;
 }

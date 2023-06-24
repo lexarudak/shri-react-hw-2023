@@ -20,16 +20,12 @@
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 20px;
+  @include text_m;
   cursor: pointer;
 }
 
 .genre {
-  font-size: 16px;
-  font-style: italic;
-  line-height: 20px;
+  @include text_s_italic;
 }
 
 .btnClose {

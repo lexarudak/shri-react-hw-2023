@@ -14,17 +14,12 @@
 }
 
 .allText {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 20px;
+  @include text_m;
 }
 
 .allAmount {
   text-align: end;
   background: none;
   border: none;
-  font-size: 20px;
-  font-family: Roboto;
-  font-weight: 600;
-  line-height: 20px;
+  @include text_m;
 }

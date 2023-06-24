@@ -10,18 +10,6 @@
   border-radius: $gap_xs;
 }
 
-@mixin label {
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 32px;
-}
-
-@mixin label_small {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-}
-
 @mixin input {
   padding: 10px 16px;
   border-radius: $gap_xs;
@@ -31,13 +19,69 @@
   justify-content: space-between;
 }
 
-
-
 // fonts
+@mixin title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+@mixin label_small {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
  @mixin body_s {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+ }
+
+ @mixin text_xs {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+ }
+
+ @mixin text_s {
+  color: $Text_primary;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+ }
+
+@mixin text_s_italic {
+  font-size: 16px;
+  line-height: 20px;
+  font-style: italic;
+ }
+
+@mixin text_m {
+  color: $Text_primary;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+ }
+
+ @mixin text_l {
+  font-size: 20px;
+  line-height: 24px;
+ }
+
+@mixin text_l_bold {
+  @include text_l;
+  font-weight: 600;
+ }
+
+@mixin text_xl {
+  font-size: 20px;
+  line-height: 32px;
+ }
+
+ @mixin text_xl_bold {
+  @include text_xl;
+  font-weight: 600;
  }
