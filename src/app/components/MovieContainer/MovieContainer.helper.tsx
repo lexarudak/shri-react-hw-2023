@@ -1,6 +1,5 @@
 import { Movies } from "@/model/typesAndInterface";
 import { FilmCard } from "@/app/components/FilmCard/FilmCard";
-import { getGenreRu } from "@/model/helper";
 
 export const fillContainer = (
   data: Movies,
@@ -23,7 +22,7 @@ export const fillContainer = (
           title,
           id,
           posterUrl,
-          genre: getGenreRu(genre),
+          genre: genre,
         }}
       />
     );

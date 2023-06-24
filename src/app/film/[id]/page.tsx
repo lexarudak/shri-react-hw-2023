@@ -14,7 +14,7 @@ export default function FilmPage({
 }: {
   params: { id: string };
 }): JSX.Element {
-  const { data, isFetching, isError } = useGetMovieQuery(id);
+  const { data, isFetching } = useGetMovieQuery(id);
   const {
     data: reviews,
     isFetching: isFetchingReviews,
@@ -26,7 +26,7 @@ export default function FilmPage({
 
   return (
     <section className={styles.page}>
-      {isError && <LightBanner text={NO_PAGE} />}
+      {!data && !isFetching && <LightBanner text={NO_PAGE} />}
       {isFetching && !data && isPageLoaded && <Spinner isSmall fill />}
       {data && isPageLoaded && (
         <>

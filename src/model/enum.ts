@@ -3,4 +3,5 @@ export const enum RouteList {
   qa = "/qa",
   about = "/about",
   cart = "/cart",
+  film = "/film",
 }

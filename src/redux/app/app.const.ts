@@ -20,5 +20,4 @@ export const enum Path {
   movies = "/movies",
   movie = "/movie",
   reviews = "/reviews",
-  film = "/film",
 }

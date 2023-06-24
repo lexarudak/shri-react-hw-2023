@@ -1,14 +1,15 @@
 "use client";
-import styles from "./FilmCard.module.scss";
-import { FilmCardProps } from "./FilmCard.interface";
+import { POPUP_CONTAINER } from "@/app/layout.const";
+import { RouteList } from "@/model/enum";
+import { getGenreRu } from "@/model/helper";
 import Image from "next/image";
-import { CartButtons } from "./CartButtons/CartButtons";
-import { Popup } from "../Popup/Popup";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { POPUP_CONTAINER } from "@/app/layout.const";
-import { useRouter } from "next/navigation";
-import { Path } from "@/redux/app/app.const";
+import { Popup } from "../Popup/Popup";
+import { CartButtons } from "./CartButtons/CartButtons";
+import { FilmCardProps } from "./FilmCard.interface";
+import styles from "./FilmCard.module.scss";
 
 export const FilmCard = ({
   movieShort: { posterUrl, title, genre, id },
@@ -19,8 +20,12 @@ export const FilmCard = ({
   const closePopup = setIsPopupOpen.bind(null, false);
   const openPopup = setIsPopupOpen.bind(null, true);
   const onClickNavigate = (): void => {
-    router.push(`${Path.film}/${id}`);
+    router.push(`${RouteList.film}/${id}`);
   };
+
+  isPopupOpen
+    ? document.body.classList.add("block")
+    : document.body.classList.remove("block");
 
   return (
     <div className={styles.card}>
@@ -42,7 +47,7 @@ export const FilmCard = ({
         <p className={styles.title} onClick={onClickNavigate}>
           {title}
         </p>
-        <p className={styles.genre}>{genre}</p>
+        <p className={styles.genre}>{getGenreRu(genre)}</p>
       </div>
       <CartButtons
         movie={{ posterUrl, id, title, genre }}

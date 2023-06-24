@@ -40,10 +40,7 @@ export const appSlice = createSlice({
       delete state.cart[action.payload];
     },
     setFilter(state, action: PayloadAction<Filter>): void {
-      const { name, genre, cinema } = action.payload;
-      state.filter.name = name;
-      state.filter.genre = genre;
-      state.filter.cinema = cinema;
+      state.filter = action.payload;
     },
     setFilterName(state, action: PayloadAction<string>): void {
       state.filter.name = action.payload;
