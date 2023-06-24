@@ -8,11 +8,11 @@ import {
   useAppSelector,
 } from "@/redux";
 
-import { Spinner } from "@/components/Spinner/Spinner";
 import { fillContainer } from "./MovieContainer.helper";
 import { useEffect, useState } from "react";
-import { LightBanner } from "@/components/LightBanner/LightBanner";
 import { EMPTY_PAGE_TEXT } from "./MovieContainer.const";
+import { LightBanner } from "../LightBanner/LightBanner";
+import { Spinner } from "../Spinner/Spinner";
 
 export const MovieContainer = (): JSX.Element => {
   const { value: filterCinema } = useAppSelector(filterCinemaSelector);

@@ -1,6 +1,5 @@
 import { Movies } from "@/model/typesAndInterface";
-import { GENRE_LIST } from "../Filter/Filter.const";
-import { FilmCard } from "@/components/FilmCard/FilmCard";
+import { FilmCard } from "@/app/components/FilmCard/FilmCard";
 import { getGenreRu } from "@/model/helper";
 
 export const fillContainer = (

@@ -3,9 +3,9 @@ import { cartSelector, initSelector, useAppSelector } from "@/redux";
 import { ALL_TEXT, NO_TICKETS_TEXT } from "./CartPage.const";
 import styles from "./CartPage.module.scss";
 import { getTicketsAmount } from "@/model/helper";
-import { FilmCard } from "@/components/FilmCard/FilmCard";
-import { LightBanner } from "@/components/LightBanner/LightBanner";
-import { Spinner } from "@/components/Spinner/Spinner";
+import { FilmCard } from "@/app/components/FilmCard/FilmCard";
+import { Spinner } from "../components/Spinner/Spinner";
+import { LightBanner } from "../components/LightBanner/LightBanner";
 
 export default function CartPage(): JSX.Element {
   const getCartItems = useAppSelector(cartSelector);

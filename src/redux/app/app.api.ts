@@ -1,4 +1,4 @@
-import { Cinemas, Movie, Movies } from "@/model/typesAndInterface";
+import { Cinemas, Movie, Movies, Review } from "@/model/typesAndInterface";
 import {
   buildCreateApi,
   coreModule,
@@ -39,8 +39,20 @@ export const appApi = createApi({
         },
       }),
     }),
+    getReviews: query<Review[], string>({
+      query: (id: string) => ({
+        url: Path.reviews,
+        params: {
+          movieId: id,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetCinemasQuery, useGetMoviesQuery, useGetMovieQuery } =
-  appApi;
+export const {
+  useGetCinemasQuery,
+  useGetMoviesQuery,
+  useGetMovieQuery,
+  useGetReviewsQuery,
+} = appApi;
