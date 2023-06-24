@@ -44,15 +44,15 @@ export const Header = (): JSX.Element => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Link href={RouteList.home} className={styles.title}>
+        <Link href={RouteList.home} className={styles.title} prefetch={false}>
           {TITLE}
         </Link>
-        <Link href={RouteList.cart} className={styles.tickets}>
+        <Link href={RouteList.cart} className={styles.tickets} prefetch={false}>
           <p className={classNames(styles.num, !init && styles.show)}>
             {getTicketsAmount(getCartItems)}
           </p>
         </Link>
-        <Link href={RouteList.cart} className={styles.cart} />
+        <Link href={RouteList.cart} className={styles.cart} prefetch={false} />
       </nav>
     </header>
   );

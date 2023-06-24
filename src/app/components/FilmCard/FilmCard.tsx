@@ -42,6 +42,8 @@ export const FilmCard = ({
         priority
         className={styles.img}
         onClick={onClickNavigate}
+        placeholder="blur"
+        blurDataURL={posterUrl}
       />
       <div className={styles.text}>
         <p className={styles.title} onClick={onClickNavigate}>
