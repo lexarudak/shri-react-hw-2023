@@ -1,6 +1,7 @@
 import { Movies } from "@/model/typesAndInterface";
 import { GENRE_LIST } from "../Filter/Filter.const";
 import { FilmCard } from "@/components/FilmCard/FilmCard";
+import { getGenreRu } from "@/model/helper";
 
 export const fillContainer = (
   data: Movies,
@@ -16,7 +17,6 @@ export const fillContainer = (
       )
     : filteredByGenre;
   return filteredByName.map(({ title, id, posterUrl, genre }) => {
-    const genreRu = GENRE_LIST.find(({ value }) => value === genre);
     return (
       <FilmCard
         key={id}
@@ -24,7 +24,7 @@ export const fillContainer = (
           title,
           id,
           posterUrl,
-          genre: genreRu ? genreRu.name : genre,
+          genre: getGenreRu(genre),
         }}
       />
     );

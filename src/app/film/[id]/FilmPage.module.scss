@@ -1,0 +1,57 @@
+.page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  @include card;
+  display: flex;
+  gap: $gap_l;
+}
+
+.img {
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: $gap_xs;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $gap_m;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap_s;
+  margin-bottom: $gap_l;
+}
+
+.item {
+  display: flex;
+  gap: $gap_xs;
+  font-size: 20px;
+  font-family: Roboto;
+  line-height: 24px;
+}
+
+.itemTitle {
+  font-weight: 600;
+}
+
+.discTitle {
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: $gap_s;
+}
+
+.disc {
+  font-size: 16px;
+  font-family: Roboto;
+  line-height: 24px;
+}

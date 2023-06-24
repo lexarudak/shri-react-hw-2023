@@ -9,6 +9,7 @@
   flex-shrink: 0;
   object-fit: cover;
   border-radius: $gap_xs;
+  cursor: pointer;
 }
 
 .text {
@@ -22,6 +23,7 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 20px;
+  cursor: pointer;
 }
 
 .genre {

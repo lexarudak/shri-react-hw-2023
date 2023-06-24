@@ -7,14 +7,20 @@ import { Popup } from "../Popup/Popup";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { POPUP_CONTAINER } from "@/app/layout.const";
+import { useRouter } from "next/navigation";
+import { Path } from "@/redux/app/app.const";
 
 export const FilmCard = ({
   movieShort: { posterUrl, title, genre, id },
   cartMode,
 }: FilmCardProps): JSX.Element => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const router = useRouter();
   const closePopup = setIsPopupOpen.bind(null, false);
   const openPopup = setIsPopupOpen.bind(null, true);
+  const onClickNavigate = (): void => {
+    router.push(`${Path.film}/${id}`);
+  };
 
   return (
     <div className={styles.card}>
@@ -30,9 +36,12 @@ export const FilmCard = ({
         height={120}
         priority
         className={styles.img}
+        onClick={onClickNavigate}
       />
       <div className={styles.text}>
-        <p className={styles.title}>{title}</p>
+        <p className={styles.title} onClick={onClickNavigate}>
+          {title}
+        </p>
         <p className={styles.genre}>{genre}</p>
       </div>
       <CartButtons

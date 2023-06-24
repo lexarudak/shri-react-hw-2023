@@ -1,3 +1,4 @@
+import { GENRE_LIST } from "@/app/components/Filter/Filter.const";
 import { Cart } from "@/redux";
 
 export const nextClickClose = (fn: (value: boolean) => void): void =>
@@ -11,3 +12,6 @@ export const getTicketsAmount = (getCartItems: Cart): number => {
     return acc + amount;
   }, 0);
 };
+
+export const getGenreRu = (genre: string): string =>
+  GENRE_LIST.find(({ value }) => value === genre)?.name || genre;

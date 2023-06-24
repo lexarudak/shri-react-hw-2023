@@ -16,7 +16,7 @@ export const CartButtons = ({
   openPopupFn,
 }: {
   movie: MovieShort;
-  openPopupFn: (() => void) | null;
+  openPopupFn?: (() => void) | null;
 }): JSX.Element => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector(cartSelector);

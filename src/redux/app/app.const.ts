@@ -18,4 +18,6 @@ export const initialState: AppState = {
 export const enum Path {
   cinemas = "/cinemas",
   movies = "/movies",
+  movie = "/movie",
+  film = "/film",
 }

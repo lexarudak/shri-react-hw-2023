@@ -1,4 +1,4 @@
-import { Cinemas, Movies } from "@/model/typesAndInterface";
+import { Cinemas, Movie, Movies } from "@/model/typesAndInterface";
 import {
   buildCreateApi,
   coreModule,
@@ -31,7 +31,16 @@ export const appApi = createApi({
         },
       }),
     }),
+    getMovie: query<Movie, string>({
+      query: (id: string) => ({
+        url: Path.movie,
+        params: {
+          movieId: id,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetCinemasQuery, useGetMoviesQuery } = appApi;
+export const { useGetCinemasQuery, useGetMoviesQuery, useGetMovieQuery } =
+  appApi;
