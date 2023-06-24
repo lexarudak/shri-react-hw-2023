@@ -6,6 +6,7 @@ export const ORIGIN = "http://localhost:3001/api/";
 export const MAX_TICKETS_IN_CART = 30;
 
 export const initialState: AppState = {
+  init: true,
   cart: {},
   filter: {
     name: "",

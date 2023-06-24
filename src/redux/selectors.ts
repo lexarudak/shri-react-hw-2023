@@ -1,5 +1,7 @@
 import { Cart, FilterValue, RootState } from "@/redux";
 
+export const initSelector = (state: RootState): boolean => state.appSlice.init;
+
 export const cartSelector = (state: RootState): Cart => state.appSlice.cart;
 
 export const filterNameSelector = (state: RootState): string =>

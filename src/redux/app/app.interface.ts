@@ -8,6 +8,7 @@ export type Cart = {
 };
 
 export interface AppState {
+  init: boolean;
   cart: Cart;
   filter: Filter;
 }

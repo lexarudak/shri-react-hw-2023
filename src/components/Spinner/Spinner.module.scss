@@ -1,3 +1,10 @@
+.fill {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .spinner {
   color: $Orange;
   display: inline-block;

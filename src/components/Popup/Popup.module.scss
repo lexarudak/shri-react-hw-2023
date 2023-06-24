@@ -1,0 +1,77 @@
+.overlay {
+  z-index: 200;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(black, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  @include card;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $gap_s;
+}
+
+.title {
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.closeBtn {
+  width: 16px;
+  height: 16px;
+  background: url('/icons/close.svg');
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.text {
+  margin-bottom: $gap_m;
+  font-size: 16px;
+  font-family: Roboto;
+  line-height: 20px;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: $gap_xs;
+}
+
+.btnYes,
+.btnNo {
+  text-align: center;
+  font-size: 14px;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 20px;
+  height: 40px;
+  padding: 0 $gap_s;
+  border-radius: $gap_xs;
+}
+
+.btnYes {
+  background-color: $Orange;
+  color: $White;
+}
+
+.btnNo {
+  border: 1px solid $Orange;
+  color: $Orange;
+  
+}

@@ -1,7 +1,7 @@
 import "@/styles/globals.scss";
 import styles from "./layout.module.scss";
 import { Header } from "./components/Header/Header";
-import { DESCRIPTION, TITLE } from "./layout.const";
+import { DESCRIPTION, POPUP_CONTAINER, TITLE } from "./layout.const";
 import { Footer } from "./components/Footer/Footer";
 import { Providers } from "@/redux";
 
@@ -21,6 +21,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className={styles.main}>{children}</main>
+          <div id={POPUP_CONTAINER} />
           <Footer />
         </Providers>
       </body>
