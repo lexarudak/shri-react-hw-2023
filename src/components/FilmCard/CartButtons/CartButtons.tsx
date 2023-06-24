@@ -11,7 +11,13 @@ import {
 import classnames from "classnames";
 import { MAX_TICKETS_IN_CART } from "@/redux/app/app.const";
 
-export const CartButtons = ({ movie }: { movie: MovieShort }): JSX.Element => {
+export const CartButtons = ({
+  movie,
+  openPopupFn,
+}: {
+  movie: MovieShort;
+  openPopupFn: (() => void) | null;
+}): JSX.Element => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector(cartSelector);
   const amount = cart[movie.id] ? cart[movie.id].amount : 0;
@@ -20,7 +26,7 @@ export const CartButtons = ({ movie }: { movie: MovieShort }): JSX.Element => {
     dispatch(addToCart(movie));
   };
   const reduceItemAmount = (): void => {
-    dispatch(reduceAmount(movie));
+    openPopupFn && amount === 1 ? openPopupFn() : dispatch(reduceAmount(movie));
   };
 
   return (

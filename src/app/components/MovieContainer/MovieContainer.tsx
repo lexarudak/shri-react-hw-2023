@@ -26,11 +26,7 @@ export const MovieContainer = (): JSX.Element => {
   return (
     <div className={styles.movieContainer}>
       {isPageLoaded && !isFetching && data}
-      {isPageLoaded && isFetching && (
-        <div className={styles.spinnerContainer}>
-          <Spinner isSmall />
-        </div>
-      )}
+      {isPageLoaded && isFetching && <Spinner isSmall fill />}
       {!data?.length && !isFetching && <LightBanner text={EMPTY_PAGE_TEXT} />}
     </div>
   );

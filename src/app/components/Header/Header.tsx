@@ -9,7 +9,6 @@ import {
   initSelector,
   setCart,
   setFilter,
-  setFilterGenre,
   setInit,
   store,
   useAppDispatch,
@@ -17,23 +16,28 @@ import {
 } from "@/redux";
 import { getTicketsAmount } from "@/model/helper";
 import { useEffect } from "react";
+import classNames from "classnames";
 
 export const Header = (): JSX.Element => {
   const getCartItems = useAppSelector(cartSelector);
   const init = useAppSelector(initSelector);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     store.subscribe(() => {
       localStorage.setItem(LS_KEY, JSON.stringify(store.getState().appSlice));
     });
+  }, []);
+
+  useEffect(() => {
     if (init) {
-      dispatch(setInit);
       const lsStore = localStorage.getItem(LS_KEY);
       if (lsStore) {
         const { filter, cart }: AppState = JSON.parse(lsStore);
         dispatch(setFilter(filter));
         dispatch(setCart(cart));
       }
+      dispatch(setInit());
     }
   }, [init, dispatch]);
 
@@ -44,7 +48,9 @@ export const Header = (): JSX.Element => {
           {TITLE}
         </Link>
         <Link href={RouteList.cart} className={styles.tickets}>
-          {getTicketsAmount(getCartItems)}
+          <p className={classNames(styles.num, !init && styles.show)}>
+            {getTicketsAmount(getCartItems)}
+          </p>
         </Link>
         <Link href={RouteList.cart} className={styles.cart} />
       </nav>
