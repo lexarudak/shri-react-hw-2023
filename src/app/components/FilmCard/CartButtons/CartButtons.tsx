@@ -10,6 +10,7 @@ import {
 } from "@/redux";
 import classnames from "classnames";
 import { MAX_TICKETS_IN_CART } from "@/redux/app/app.const";
+import { useEffect, useState } from "react";
 
 export const CartButtons = ({
   movie,
@@ -20,6 +21,10 @@ export const CartButtons = ({
 }): JSX.Element => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector(cartSelector);
+  const [isPageLoad, setIsPageLoad] = useState(false);
+  useEffect(() => {
+    setIsPageLoad(true);
+  }, []);
   const amount = cart[movie.id] ? cart[movie.id].amount : 0;
 
   const addItem = (): void => {
@@ -30,17 +35,22 @@ export const CartButtons = ({
   };
 
   return (
-    <div className={classnames(styles.buttons, amount > 9 && styles.large)}>
+    <div
+      className={classnames(
+        styles.buttons,
+        isPageLoad && amount > 9 && styles.large
+      )}
+    >
       <button
         className={classnames(styles.btn, styles.btnMinus)}
         onClick={reduceItemAmount}
-        disabled={amount === 0}
+        disabled={isPageLoad && amount === 0}
       />
       <input className={styles.amount} type="text" disabled value={amount} />
       <button
         className={classnames(styles.btn, styles.btnPlus)}
         onClick={addItem}
-        disabled={amount === MAX_TICKETS_IN_CART}
+        disabled={isPageLoad && amount === MAX_TICKETS_IN_CART}
       />
     </div>
   );

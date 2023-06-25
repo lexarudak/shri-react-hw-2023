@@ -2,9 +2,12 @@
 import classNames from "classnames";
 import styles from "./Select.module.scss";
 import { FilterValue, useAppDispatch } from "@/redux";
-import { useState } from "react";
-import { nextClickClose } from "@/model/helper";
+import { useRef, useState } from "react";
+import { nextActionClose } from "@/model/helper";
 import { SelectProps } from "./Select.interface";
+import { Options } from "./Options/Options";
+import { createPortal } from "react-dom";
+import { DROPDOWN_CONTAINER } from "@/app/layout.const";
 
 export function Select<T extends string>({
   label,
@@ -16,29 +19,15 @@ export function Select<T extends string>({
   const dispatch = useAppDispatch();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [{ name: initName }] = list;
-
-  // isSelectOpen
-  //   ? document.body.classList.add("block")
-  //   : document.body.classList.remove("block");
+  const selectRef = useRef<HTMLDivElement>(null);
 
   const onClickSelect = (): void => {
-    if (!isSelectOpen) nextClickClose(setIsSelectOpen);
+    if (!isSelectOpen) nextActionClose(setIsSelectOpen);
     setIsSelectOpen(!isSelectOpen);
   };
-
   const onClickItem = (item: FilterValue): void => {
     dispatch(setter(item));
   };
-
-  const fillList = (list: FilterValue[]): JSX.Element => (
-    <ul className={styles.list}>
-      {list.map((item, ind) => (
-        <li className={styles.item} key={ind} onClick={() => onClickItem(item)}>
-          {item.name}
-        </li>
-      ))}
-    </ul>
-  );
 
   return (
     <div className={styles.select}>
@@ -46,6 +35,7 @@ export function Select<T extends string>({
       <div
         className={classNames(styles.input, isSelectOpen && styles.open)}
         onClick={onClickSelect}
+        ref={selectRef}
       >
         <p
           className={classNames(
@@ -57,7 +47,16 @@ export function Select<T extends string>({
         </p>
         <div className={styles.btnInput} />
       </div>
-      {isSelectOpen && fillList(list)}
+      {isSelectOpen &&
+        selectRef.current &&
+        createPortal(
+          <Options
+            list={list}
+            click={onClickItem}
+            parent={selectRef.current}
+          />,
+          document.getElementById(DROPDOWN_CONTAINER) || document.body
+        )}
     </div>
   );
 }

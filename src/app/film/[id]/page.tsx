@@ -1,61 +1,52 @@
-"use client";
 import { CartButtons } from "@/app/components/FilmCard/CartButtons/CartButtons";
-import { useGetMovieQuery, useGetReviewsQuery } from "@/redux/app/app.api";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { DISC_TITLE, NO_PAGE } from "./FilmPage.const";
 import styles from "./FilmPage.module.scss";
 import { fillComments, fillList } from "./FilmPage.helper";
 import { LightBanner } from "@/app/components/LightBanner/LightBanner";
-import { Spinner } from "@/app/components/Spinner/Spinner";
+import { ORIGIN, Path } from "@/redux/app/app.const";
+import { Movie, Review } from "@/model/typesAndInterface";
 
-export default function FilmPage({
+export default async function FilmPage({
   params: { id },
 }: {
   params: { id: string };
-}): JSX.Element {
-  const { data, isFetching } = useGetMovieQuery(id);
-  const {
-    data: reviews,
-    isFetching: isFetchingReviews,
-    isError: isErrorReviews,
-  } = useGetReviewsQuery(id);
+}): Promise<JSX.Element> {
+  const getFilm = fetch(`${ORIGIN}${Path.movie}?movieId=${id}`);
+  const getComments = fetch(`${ORIGIN}${Path.reviews}?movieId=${id}`);
+  const [filmRes, commentsRes] = await Promise.all([getFilm, getComments]);
 
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-  useEffect(() => setIsPageLoaded(true), []);
+  try {
+    const [filmData, commentsData]: [Movie, Review[]] = await Promise.all([
+      filmRes.json(),
+      commentsRes.json(),
+    ]);
 
-  return (
-    <section className={styles.page}>
-      {!data && !isFetching && <LightBanner text={NO_PAGE} />}
-      {isFetching && !data && isPageLoaded && <Spinner isSmall fill />}
-      {data && isPageLoaded && (
-        <>
-          <div className={styles.card}>
-            <Image
-              src={data.posterUrl}
-              alt={data.title}
-              width={400}
-              height={500}
-              priority
-              className={styles.img}
-            />
-            <div className={styles.info}>
-              <div className={styles.header}>
-                <h2 className={styles.title}>{data.title}</h2>
-                <CartButtons movie={data} />
-              </div>
-              {fillList(data)}
-              <p className={styles.discTitle}>{DISC_TITLE}</p>
-              <p className={styles.disc}>{data.description}</p>
+    return (
+      <section className={styles.page}>
+        <div className={styles.card}>
+          <Image
+            src={filmData.posterUrl}
+            alt={filmData.title}
+            width={400}
+            height={500}
+            priority
+            className={styles.img}
+          />
+          <div className={styles.info}>
+            <div className={styles.header}>
+              <h2 className={styles.title}>{filmData.title}</h2>
+              <CartButtons movie={filmData} />
             </div>
+            {fillList(filmData)}
+            <p className={styles.discTitle}>{DISC_TITLE}</p>
+            <p className={styles.disc}>{filmData.description}</p>
           </div>
-          {isErrorReviews && <LightBanner text={NO_PAGE} />}
-          {isFetchingReviews && !reviews && isPageLoaded && (
-            <Spinner isSmall fill />
-          )}
-          {reviews && isPageLoaded && fillComments(reviews)}
-        </>
-      )}
-    </section>
-  );
+        </div>
+        {commentsData.length && fillComments(commentsData)}
+      </section>
+    );
+  } catch {
+    return <LightBanner text={NO_PAGE} />;
+  }
 }
