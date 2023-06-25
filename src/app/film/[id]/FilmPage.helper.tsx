@@ -22,8 +22,8 @@ export const fillList = ({
 
 export const fillComments = (reviews: Review[]): JSX.Element => (
   <ul className={styles.commentsList}>
-    {reviews.map((review) => (
-      <CommentCard review={review} key={review.id} />
+    {reviews.map((review, ind) => (
+      <CommentCard review={review} key={ind} />
     ))}
   </ul>
 );
