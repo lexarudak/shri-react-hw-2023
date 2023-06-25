@@ -38,8 +38,6 @@ export default function FilmPage({
               height={500}
               priority
               className={styles.img}
-              placeholder="blur"
-              blurDataURL={data.posterUrl}
             />
             <div className={styles.info}>
               <div className={styles.header}>

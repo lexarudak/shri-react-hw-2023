@@ -17,6 +17,10 @@ export function Select<T extends string>({
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [{ name: initName }] = list;
 
+  // isSelectOpen
+  //   ? document.body.classList.add("block")
+  //   : document.body.classList.remove("block");
+
   const onClickSelect = (): void => {
     if (!isSelectOpen) nextClickClose(setIsSelectOpen);
     setIsSelectOpen(!isSelectOpen);

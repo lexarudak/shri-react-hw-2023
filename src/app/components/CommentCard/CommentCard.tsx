@@ -11,14 +11,7 @@ export const CommentCard = ({
   return (
     <div className={styles.card}>
       <div className={styles.img}>
-        <Image
-          src="/icons/photo.svg"
-          width={32}
-          height={32}
-          alt={name}
-          placeholder="blur"
-          blurDataURL="/icons/photo.svg"
-        />
+        <Image src="/icons/photo.svg" width={32} height={32} alt={name} />
       </div>
       <div className={styles.info}>
         <div className={styles.header}>

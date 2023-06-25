@@ -1,32 +1,32 @@
 "use client";
-import { useGetMoviesQuery } from "@/redux/app/app.api";
+import { useLazyGetMoviesQuery } from "@/redux/app/app.api";
 import styles from "./MovieContainer.module.scss";
 import {
-  filterCinemaSelector,
+  filterCinemaValueSelector,
   filterGenreSelector,
   filterNameSelector,
   useAppSelector,
 } from "@/redux";
-
 import { fillContainer } from "./MovieContainer.helper";
-import { useEffect, useState } from "react";
 import { EMPTY_PAGE_TEXT } from "./MovieContainer.const";
 import { LightBanner } from "../LightBanner/LightBanner";
 import { Spinner } from "../Spinner/Spinner";
+import { useEffect } from "react";
 
 export const MovieContainer = (): JSX.Element => {
-  const { value: filterCinema } = useAppSelector(filterCinemaSelector);
+  const cinemaId = useAppSelector(filterCinemaValueSelector);
   const { value: filterGenre } = useAppSelector(filterGenreSelector);
   const name = useAppSelector(filterNameSelector);
-  const { isFetching, currentData } = useGetMoviesQuery(filterCinema);
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-  useEffect(() => setIsPageLoaded(true), []);
+  const [trigger, { isFetching, currentData }] = useLazyGetMoviesQuery();
+  useEffect(() => {
+    trigger(cinemaId);
+  }, [trigger, cinemaId]);
   const data = currentData && fillContainer(currentData, filterGenre, name);
 
   return (
     <div className={styles.movieContainer}>
-      {isPageLoaded && !isFetching && data}
-      {isPageLoaded && isFetching && <Spinner isSmall fill />}
+      {!isFetching && data}
+      {isFetching && <Spinner isSmall fill />}
       {!data?.length && !isFetching && <LightBanner text={EMPTY_PAGE_TEXT} />}
     </div>
   );

@@ -1,0 +1,30 @@
+.tickets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  gap: 10px;
+  overflow: hidden;
+
+  width: 28px;
+  height: 28px;
+
+  background: $Orange;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  margin-right: 8px;
+  margin-left: auto;
+}
+
+.num {
+  transition: .3s;
+  transform: translateX(-150%);
+  opacity: 0;
+
+  &.show {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}

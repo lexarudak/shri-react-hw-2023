@@ -28,8 +28,8 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className={styles.main}>{children}</main>
-          <div id={POPUP_CONTAINER} />
           <Footer />
+          <div id={POPUP_CONTAINER} />
         </Providers>
       </body>
     </html>

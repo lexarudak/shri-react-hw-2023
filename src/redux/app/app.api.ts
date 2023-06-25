@@ -53,6 +53,7 @@ export const appApi = createApi({
 export const {
   useGetCinemasQuery,
   useGetMoviesQuery,
+  useLazyGetMoviesQuery,
   useGetMovieQuery,
   useGetReviewsQuery,
 } = appApi;

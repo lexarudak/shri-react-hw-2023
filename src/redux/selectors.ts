@@ -10,5 +10,8 @@ export const filterNameSelector = (state: RootState): string =>
 export const filterGenreSelector = (state: RootState): FilterValue =>
   state.appSlice.filter.genre;
 
+export const filterCinemaValueSelector = (state: RootState): string =>
+  state.appSlice.filter.cinema.value;
+
 export const filterCinemaSelector = (state: RootState): FilterValue =>
   state.appSlice.filter.cinema;

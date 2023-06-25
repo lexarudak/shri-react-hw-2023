@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState, MAX_TICKETS_IN_CART } from "./app.const";
 import { MovieShort } from "@/model/typesAndInterface";
-import { Cart, Filter, FilterValue } from "./app.interface";
+import { AppState, FilterValue } from "./app.interface";
 
 export const appSlice = createSlice({
   name: "appSlice",
@@ -10,8 +10,11 @@ export const appSlice = createSlice({
     setInit(state): void {
       state.init = false;
     },
-    setCart(state, action: PayloadAction<Cart>) {
-      state.cart = action.payload;
+    setState(state, action: PayloadAction<AppState>) {
+      const { cart, filter, init } = action.payload;
+      state.cart = cart;
+      state.filter = filter;
+      state.init = init;
     },
     addToCart(state, action: PayloadAction<MovieShort>): void {
       const { id } = action.payload;
@@ -39,9 +42,6 @@ export const appSlice = createSlice({
     removeItem(state, action: PayloadAction<string>): void {
       delete state.cart[action.payload];
     },
-    setFilter(state, action: PayloadAction<Filter>): void {
-      state.filter = action.payload;
-    },
     setFilterName(state, action: PayloadAction<string>): void {
       state.filter.name = action.payload;
     },
@@ -62,8 +62,7 @@ export const {
   setFilterGenre,
   setCinemaName,
   setInit,
-  setFilter,
-  setCart,
+  setState,
 } = appSlice.actions;
 
 export default appSlice.reducer;

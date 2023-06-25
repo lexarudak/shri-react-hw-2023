@@ -1,3 +1,4 @@
+"use client";
 import styles from "./HomePage.module.scss";
 import { Filter } from "./components/Filter/Filter";
 import { MovieContainer } from "./components/MovieContainer/MovieContainer";
