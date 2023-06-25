@@ -17,10 +17,12 @@ export const MovieContainer = (): JSX.Element => {
   const cinemaId = useAppSelector(filterCinemaValueSelector);
   const { value: filterGenre } = useAppSelector(filterGenreSelector);
   const name = useAppSelector(filterNameSelector);
+
   const [trigger, { isFetching, currentData }] = useLazyGetMoviesQuery();
   useEffect(() => {
     trigger(cinemaId);
   }, [trigger, cinemaId]);
+
   const data = currentData && fillContainer(currentData, filterGenre, name);
 
   return (

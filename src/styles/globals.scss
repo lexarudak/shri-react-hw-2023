@@ -41,3 +41,21 @@ input {
 .block {
     overflow: hidden
   }
+
+#popupContainer {
+  z-index: 200;
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  top: 0px;
+  left: 0px;
+}
+
+#dropdownContainer {
+  z-index: 50;
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  top: 0px;
+  left: 0px;
+}
