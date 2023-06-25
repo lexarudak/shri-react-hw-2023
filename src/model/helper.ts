@@ -6,6 +6,16 @@ export const nextClickClose = (fn: (value: boolean) => void): void =>
     once: true,
   });
 
+export const nextActionClose = (fn: (value: boolean) => void): void => {
+  const closeAndRemove = (): void => {
+    fn(false);
+    document.removeEventListener("scroll", closeAndRemove);
+    document.removeEventListener("click", closeAndRemove);
+  };
+  document.addEventListener("click", closeAndRemove);
+  document.addEventListener("scroll", closeAndRemove);
+};
+
 export const getTicketsAmount = (getCartItems: Cart): number => {
   const items = Object.values(getCartItems);
   return items.reduce((acc, { amount }) => {
