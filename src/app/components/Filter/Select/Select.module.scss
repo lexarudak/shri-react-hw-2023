@@ -30,27 +30,8 @@
       color: $Text_primary;
     }
     
-
     .btnInput { 
       transform: rotate(180deg);
     }
-
   }
-}
-
-.list {
-  z-index: 2;
-  width: 360px;
-  padding: $gap_xs;
-  border-radius: $gap_xs;
-  position: absolute;
-  bottom: -$gap_xxs;
-  transform: translateY(100%);
-  background-color: $White;
-  box-shadow: $shadow_main;
-}
-
-.item {
-  padding: 12px;
-  cursor: pointer;
 }
