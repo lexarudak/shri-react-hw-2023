@@ -11,6 +11,7 @@
 }
 
 .item {
+  @include body_s;
   padding: 12px;
   cursor: pointer;
 }
